@@ -1,5 +1,5 @@
 ﻿"use client";
-import { FC, useEffect, useLayoutEffect } from "react";
+import { FC, useEffect } from "react";
 import axios from "axios";
 import Currency from "@/components/ui/Currency";
 import Button from "@/components/ui/Button";
@@ -25,9 +25,8 @@ const Summary: FC<SummaryProps> = ({}) => {
       removeAll();
     }
 
-    if (searchParams.get("cancelled")) {
+    if (searchParams.get("canceled")) {
       toast.success("Something went wrong");
-      removeAll();
     }
   }, [searchParams, removeAll]);
 
@@ -35,7 +34,7 @@ const Summary: FC<SummaryProps> = ({}) => {
     const response = await axios.post(
       `${process.env.NEXT_PUBLIC_API_URL}/checkout`,
       {
-        productId: items.map((item) => item.id),
+        productIds: items.map((item) => item.id),
       }
     );
 
