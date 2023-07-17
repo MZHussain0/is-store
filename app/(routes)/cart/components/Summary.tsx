@@ -52,7 +52,10 @@ const Summary: FC<SummaryProps> = ({}) => {
         </div>
       </div>
 
-      <Button onClick={onCheckout} className="w-full mt-6">
+      <Button
+        disabled={items.length === 0}
+        onClick={onCheckout}
+        className="w-full mt-6">
         CheckOut
       </Button>
     </div>
